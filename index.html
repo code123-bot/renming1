@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>人民的团队</title>
+    <style>
+        /* 全局重置与字体 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'SimHei', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow: hidden; /* 防止滚动条 */
+        }
+
+        /* 海报容器：固定尺寸，适配A4或大屏展示 */
+        .poster {
+            width: 1080px;
+            height: 1920px; /* 竖屏海报比例 9:16，适合展示屏 */
+            max-width: 100vw;
+            max-height: 100vh;
+            margin: 0 auto;
+            padding: 40px 30px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: auto;
+        }
+
+        @media (max-width: 1024px) {
+            .poster {
+                width: 90vw;
+                height: 90vh;
+                padding: 20px;
+            }
+        }
+
+        /* Logo 区域 */
+        .logo {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .logo img {
+            width: 300px;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(211, 47, 47, 0.3));
+        }
+
+        .logo p {
+            font-size: 1.4em;
+            color: #d32f2f;
+            margin-top: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* 标题区 */
+        .intro {
+            text-align: center;
+            margin: 20px 0 40px;
+            padding: 0 20px;
+            max-width: 800px;
+        }
+
+        .intro h2 {
+            font-size: 2.2em;
+            color: #d32f2f;
+            margin-bottom: 15px;
+        }
+
+        .intro p {
+            font-size: 1.3em;
+            color: #444;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        /* 成员分类标题 */
+        .section-title {
+            font-size: 1.8em;
+            color: #d32f2f;
+            margin: 40px 0 20px;
+            border-bottom: 4px solid #d32f2f;
+            padding-bottom: 8px;
+            text-align: center;
+            width: 80%;
+            font-weight: bold;
+        }
+
+        /* 组织结构图 */
+        .org-chart {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .level {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .member {
+            border: 2px solid red;
+            border-radius: 50%;
+            padding: 10px;
+            margin: 10px;
+            position: relative;
+        }
+
+        .member::after {
+            content: attr(data-name);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        /* 联系方式 */
+        .contact {
+            margin: 50px 0 30px;
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+            padding: 20px;
+            background: #f8f8f8;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+        }
+
+        .contact h2 {
+            font-size: 1.8em;
+            color: #d32f2f;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            font-size: 1.2em;
+            color: #444;
+            margin: 8px 0;
+        }
+
+        /* 装饰元素：背景线条或徽章（可选） */
+        .decoration {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        /* 口号 */
+        .slogan {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.8em;
+            color: #d32f2f;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .slogan p {
+            margin: 10px 0;
+            font-size: 1.5em;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="poster">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="人民的团队.png" alt="人民的团队Logo">
+            <p>为人民服务！</p>
+        </div>
+
+        <!-- 口号 -->
+        <div class="slogan">
+            <h2>Code for the People, AI with Heart</h2>
+            <p>代码为人民而写，AI以初心而行。</p>
+        </div>
+
+        <!-- 组织结构图 -->
+        <div class="org-chart">
+            <div class="level">
+                <div class="member" data-name="李鑫磊">组长</div>
+            </div>
+            <div class="level">
+                <div class="member" data-name="邓诗雨">组员</div>
+                <div class="member" data-name="陈松">组员</div>
+                <div class="member" data-name="李培凌">技术支持</div>
+                <div class="member" data-name="王琪钰">组员</div>
+                <div class="member" data-name="王文豪">组员</div>
+            </div>
+        </div>
+
+        <!-- 联系方式 -->
+        <div class="contact">
+            <h2>联系我们</h2>
+            <p>邮箱：cdut.edu.cn</p>
+            <p>微信公众号：A人民的团队</p>
+            <p>地址：中国 · 宜宾市翠屏区峥嵘路218号</p>
+        </div>
+
+
+    </div>
+
+    <script>
+        // 点击交互：保留但简化
+        document.querySelectorAll('.member').forEach(member => {
+            member.addEventListener('click', () => {
+                const name = member.textContent;
+                const roleName = member.getAttribute('data-name');
+                alert(`成员：${roleName}\n职责：${name}`);
+            });
+        });
+    </script>
+</body>
+</html>
